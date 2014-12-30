@@ -1,4 +1,4 @@
-## Machinekit Styled GCode
+## Machinekit Flavour GCode
 
 ### GCodes
 
