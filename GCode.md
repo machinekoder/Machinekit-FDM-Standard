@@ -21,7 +21,15 @@ Set the temperature of the device attached to the second temperature sensor to 1
 Example: `M106 S127`
 
 Turn on the cooling fan at half speed.
+
 Mandatory parameter 'S' declares the PWM value (0-255). M106 S0 turns the fan off.
+
+### [M107](./subroutines/m107.ngc): Fan Off
+Example: `M107`
+
+Turn on the cooling fan off.
+
+Deprecated. Use M106 S0 instead. (But used by Slic3r)
 
 #### Additional Fans/Devices
 Additionally to the above, Machinekit uses M106 to control general devices. It supports the additional P parameter, which is an zero-based index into the list of fans/devices.
