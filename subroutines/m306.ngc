@@ -1,3 +1,11 @@
 o<m306> sub
-    G10 L20 P1 Z#<Z>
+o100 if [EXISTS[#<x>]]
+    G10 L20 P1 Z#<x>
+o100 endif
+o101 if [EXISTS[#<y>]]
+    G10 L20 P1 Z#<y>
+o101 endif
+o102 if [EXISTS[#<z>]]
+    G10 L20 P1 Z#<z>
+o102 endif
 o<m306> end sub

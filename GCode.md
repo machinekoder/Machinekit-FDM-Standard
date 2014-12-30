@@ -48,3 +48,57 @@ Similar to M104 this command supports the additional P parameter for specifying 
 Example: `M109 P1 S100`
 
 Set the temperature of the device attached to the second temperature sensor to 100 °C and wait for the temperature to be reached.
+
+### [M140](./subroutines/m140.ngc): Bed Temperature (Fast)
+Example: `M140 S55`
+
+Set the temperature of the build bed to 55 °C and return control to the host immediately (i.e. before that temperature has been reached by the bed).
+
+### [M141](./subroutines/m141.ngc): Chamber Temperature (Fast)
+Example: `M141 S30`
+
+Set the temperature of the chamber to 30 °C and return control to the host immediately (i.e. before that temperature has been reached by the chamber).
+
+### [M190](./subroutines/m190.ngc): Wait for bed temperature to reach target temp
+Example: `M190 S60`
+
+Set the temperature of the build bed to 60 °C and wait for the temperature to be reached.
+
+### [M191](./subroutines/m191.ngc): Wait for chamber temperature to reach target temp
+Example: `M191 S60`
+
+Set the temperature of the build chamber to 60 °C and wait for the temperature to be reached.
+
+### [M226](./subroutines/m226.ngc): Gcode Initiated Pause
+Example: `M226`
+
+Initiates a pause in the same way as if the pause button is pressed. That is, program execution is stopped and the printer waits for user interaction. This matches the behaviour of M1 in the [NIST RS274NGC G-code standard](http://www.nist.gov/manuscript-publication-search.cfm?pub_id=823374).
+
+### [M306](./subroutines/m306.ngc): Set home offset calculated from toolhead position
+Example: `M306 Z0`
+
+The values specified are added to the calculated end stop position when the axes are referenced. The calculated value is derived from the distance of the toolhead from the current axis zero point.
+
+The user would typically place the toolhead at the zero point of the axis and issue the M306 command.
+
+### [M400](./subroutines/m400.ngc): Wait for current moves to finish
+Example: `M400`
+
+Finishes all current moves and and thus clears the buffer. That's identical to `G4 P0`.
+
+### [M420](./subroutines/m420.ngc): Set RGBW Colors as PWM
+Usage: `M420 R<Red PWM (0-255)> E<Green PWM (0-255)> B<Blue PWM (0-255)> W<White PWM (0-255)>`
+
+Example: `M420 R255 E255 B255 W255`
+
+Set the color of your RGBW LEDs that are connected to PWM-enabled pins. Note, the Green color is controlled by the E value instead of the G value due to the G code being a primary code that cannot be overridden.
+
+### [M600](./subroutines/m600.ngc): Calibrate Z axis
+Example: `M600`
+
+Calibrates the Z axis by probing the distance to the build bed.
+
+### [M601](./subroutines/m600.ngc): Probe Z axis
+Example: `M600`
+
+Probes the Z axis at the current position.
