@@ -16,9 +16,9 @@ o100 if [EXISTS[#<i>]]
     o109 endif
 o100 else
     o120 if [EXISTS[#<p>]]
-            M68 E[#<p>+#500] Q#<S>
+            M67 E[#<p>+#500] Q#<S>
     o120 else
-            M68 E#500 Q#<S>
+            M67 E#500 Q#<S>
     o120 endif
 o100 endif
 o<m106> end sub

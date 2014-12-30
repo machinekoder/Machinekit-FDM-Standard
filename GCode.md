@@ -35,7 +35,7 @@ By default the M106 command will be executed with the next movement. This defaul
 
 Example: `M106 I1 S127`
 
-Turn on the cooling fan at half speed immediately. The value of the I parameter is indifferent.
+Turn on the cooling fan at half speed immediately. `I0` equals to not immediate, all other values evaluate to immediate if I is specified.
 
 ### [M109](./subroutines/m109.ngc): Set Extruder Temperature and Wait
 Example: `M109 S185`
