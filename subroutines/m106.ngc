@@ -1,0 +1,24 @@
+o<m106> sub
+#500=12
+o100 if [EXISTS[#<i>]]
+    o109 if [#<i> EQ 0]
+        o110 if [EXISTS[#<p>]]
+                M67 E[#<p>+#500] Q#<S>
+        o110 else
+                M67 E#500 Q#<S>
+        o110 endif
+    o109 else
+        o111 if [EXISTS[#<p>]]
+                M68 E[#<p>+#500] Q#<S>
+        o111 else
+                M68 E#500 Q#<S>
+        o111 endif
+    o109 endif
+o100 else
+    o120 if [EXISTS[#<p>]]
+            M68 E[#<p>+#500] Q#<S>
+    o120 else
+            M68 E#500 Q#<S>
+    o120 endif
+o100 endif
+o<m106> end sub

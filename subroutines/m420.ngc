@@ -1,0 +1,15 @@
+o<m420> sub
+#500=25
+o100 if [EXISTS[#<r>]]
+        M68 E#500 Q#<r>
+o100 endif
+o101 if [EXISTS[#<e>]]
+        M68 E[#500+1] Q#<e>
+o101 endif
+o102 if [EXISTS[#<b>]]
+        M68 E[#500+2] Q#<b>
+o102 endif
+o103 if [EXISTS[#<w>]]
+        M68 E[#500+3] Q#<w>
+o103 endif
+o<m420> end sub 

@@ -1,0 +1,8 @@
+o<m104> sub
+#500=2
+o100 if [EXISTS[#<p>]]
+        M68 E[#<p>+#500] Q#<S>
+o100 else
+        M68 E#500 Q#<S>
+o100 endif
+o<m104> end sub 

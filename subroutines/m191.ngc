@@ -1,0 +1,4 @@
+o<m190> sub
+    M68 E1 Q#<S>
+    M66 P1 L3 Q1000
+o<m190> end sub
