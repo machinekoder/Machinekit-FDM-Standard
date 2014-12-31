@@ -1,0 +1,19 @@
+o<g28> sub
+o100 if [EXISTS[#<x>] or EXISTS[#<y>] or EXISTS[#<z>] or EXISTS[#<a>]]
+    o110 if [EXISTS[#<x>]
+        G0 X0
+    o110 endif
+    o111 if [EXISTS[#<y>]
+        G0 Y0
+    o111 endif
+    o112 if [EXISTS[#<z>]
+        G0 Z0
+    o112 endif
+    o113 if [EXISTS[#<a>]
+        G92 A0; set extruder axis to 0
+    o113 endif
+o100 else
+    G0 X0 Y0 Z0; homing not supported, move to 0
+    G92 A0; set extruder axis to 0
+o100 endif
+o<g28> end sub 

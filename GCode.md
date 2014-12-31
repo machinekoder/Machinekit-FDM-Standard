@@ -2,6 +2,13 @@
 
 ## GCodes
 
+### [G28](./subroutines/g28.ngc): Move to Origin
+Example: `G28`
+
+This code exists for compatibility reasons with RepRap flavor GCode. Machinekit does not support homing from GCode as homing needs to be triggered from the user interface. This code causes the FDM machine to move back to its X, Y and Z zero coordinates and resets the extruder axis. 
+
+If you add coordinates, then just the axes with coordinates specified will be zeroed. Thus `G28 X0 Y72.3` will zero the X and Y axes, but not Z. The actual coordinate values are ignored.
+
 ## MCodes
 Machinekit supports a number of FDM specific MCodes inspired by the [RepRap MCodes](http://reprap.org/wiki/G-code). These codes are implemented using remapping. If you are interested in developing your own Machinekit based 3D printer take a look at the [remap file](remap.ini).
 
