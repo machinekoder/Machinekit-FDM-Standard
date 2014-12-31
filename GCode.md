@@ -84,10 +84,27 @@ Example: `M191 S60`
 
 Set the temperature of the build chamber to 60 °C and wait for the temperature to be reached.
 
+### [M206](./subroutines/m206.ngc): Set home offset
+Example: `M206 X10.0 Y10.0 Z-0.4`
+
+The values specified are added to the endstop position when the axes are referenced. The same can be achieved with a G92 right after homing (G28, G161).
+
 ### [M226](./subroutines/m226.ngc): Gcode Initiated Pause
 Example: `M226`
 
 Initiates a pause in the same way as if the pause button is pressed. That is, program execution is stopped and the printer waits for user interaction. This matches the behaviour of M1 in the [NIST RS274NGC G-code standard](http://www.nist.gov/manuscript-publication-search.cfm?pub_id=823374).
+
+### [M280](./subroutines/m280.ngc): Set servo position
+Example: `M280 P0 S1500`
+
+Set servo position absolute. P: servo index, S: angle or microseconds
+
+### [M300](./subroutines/m300.ngc): Play beep sound
+Usage: `M300 S<frequency Hz> P<duration ms>`
+
+Example: `M300 S300 P1000`
+
+Play beep sound, use to notify important events like the end of printing. The S parameter is optional and may not be supported by all electronics that implement the buzzer.
 
 ### [M306](./subroutines/m306.ngc): Set home offset calculated from toolhead position
 Example: `M306 Z0`
