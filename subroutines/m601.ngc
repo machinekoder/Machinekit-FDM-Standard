@@ -1,6 +1,0 @@
-o<m601> sub
-    G0 Z2.0
-    M64 P00
-    G38.2 Z-3.0 F30
-    M65 P00
-o<m601> end sub 

@@ -1,4 +1,4 @@
-## Machinekit Flavor GCode
+# Machinekit Flavor GCode
 
 ## GCodes
 
@@ -8,6 +8,29 @@ Example: `G28`
 This code exists for compatibility reasons with RepRap flavor GCode. Machinekit does not support homing from GCode as homing needs to be triggered from the user interface. This code causes the FDM machine to move back to its X, Y and Z zero coordinates and resets the extruder axis. 
 
 If you add coordinates, then just the axes with coordinates specified will be zeroed. Thus `G28 X0 Y72.3` will zero the X and Y axes, but not Z. The actual coordinate values are ignored.
+
+### [G29](./subroutines/g29.ngc): Detailed Z-Probe
+Example: `G29`
+
+Probes the bed at a specified number of point points (usually 3-4).
+
+### [G29.1](./subroutines/g29_1.ngc): Set Z probe head offset
+Example: `G30.1 X30 Y20 Z0.5`
+
+Set the offset of the Z probe head. The offset will be subtracted from all probe moves.
+
+### [G30](./subroutines/g30.ngc): Single Z Probe
+Example: `G30 X10 Y0`
+
+In its simplest form probes bed at current XY location.
+
+If a Pn field is specified the probed X, and Y values are saved as point n on the bed for calculating the offset plane. Generally n is 0, 1, or 2. If X, or Y values are specified (e.g. `G30 P1 X20 Y50`) then those values are used instead of the machine's current coordinates. The combination of these options allows for the machine to be moved to points using G1 commands, and then probe the bed, or for the user to position the nozzle interactively and use those coordinates. The user can also record those values and place them in a setup GCode file for automatic execution.
+
+
+### [G30.1](./subroutines/g30_1.ngc): Set Z probe point
+Example: `G30.1 P1 X30 Y40.5`
+
+Set the points at which the bed will be probed to compensate for its plane being slightly out of horizontal. The P value is the index of the point (indices start at 0) and the X and Y values are the position to move extruder 0 to to probe the bed. An implementation should allow a minimum of three points (P0, P1 and P2). This just records the point coordinates; it does not actually do the probing. See G32.
 
 ## MCodes
 Machinekit supports a number of FDM specific MCodes inspired by the [RepRap MCodes](http://reprap.org/wiki/G-code). These codes are implemented using remapping. If you are interested in developing your own Machinekit based 3D printer take a look at the [remap file](remap.ini).
@@ -84,11 +107,6 @@ Example: `M191 S60`
 
 Set the temperature of the build chamber to 60 °C and wait for the temperature to be reached.
 
-### [M206](./subroutines/m206.ngc): Set home offset
-Example: `M206 X10.0 Y10.0 Z-0.4`
-
-The values specified are added to the endstop position when the axes are referenced. The same can be achieved with a G92 right after homing (G28, G161).
-
 ### [M226](./subroutines/m226.ngc): Gcode Initiated Pause
 Example: `M226`
 
@@ -106,13 +124,6 @@ Example: `M300 S300 P1000`
 
 Play beep sound, use to notify important events like the end of printing. The S parameter is optional and may not be supported by all electronics that implement the buzzer.
 
-### [M306](./subroutines/m306.ngc): Set home offset calculated from toolhead position
-Example: `M306 Z0`
-
-The values specified are added to the calculated end stop position when the axes are referenced. The calculated value is derived from the distance of the toolhead from the current axis zero point.
-
-The user would typically place the toolhead at the zero point of the axis and issue the M306 command.
-
 ### [M400](./subroutines/m400.ngc): Wait for current moves to finish
 Example: `M400`
 
@@ -125,12 +136,17 @@ Example: `M420 R255 E255 B255 W255`
 
 Set the color of your RGBW LEDs that are connected to PWM-enabled pins. Note, the Green color is controlled by the E value instead of the G value due to the G code being a primary code that cannot be overridden. The optional P parameter specifies the index of the LEDs to set (default 0).
 
-### [M600](./subroutines/m600.ngc): Calibrate Z axis
-Example: `M600`
+## RepRap Alternatives
+Some RepRap GCodes can not be implemented but easily replaced by native Machinekit GCodes.
 
-Calibrates the Z axis by probing the distance to the build bed.
+### M206: Set home offset
+Replacement: `G10 L2 P1 X10.0 Y10.0 Z-0.4`
 
-### [M601](./subroutines/m600.ngc): Probe Z axis
-Example: `M600`
+The values specified are added to the endstop position when the axes are referenced. The same can be achieved with a G92 right after homing (G28, G161).
 
-Probes the Z axis at the current position.
+### M306: Set home offset calculated from toolhead position
+Replacement: `G10 L20 P1 X10.0 Y10.0 Z-0.4`
+
+The values specified are added to the calculated end stop position when the axes are referenced. The calculated value is derived from the distance of the toolhead from the current axis zero point.
+
+The user would typically place the toolhead at the zero point of the axis and issue the M306 command.
