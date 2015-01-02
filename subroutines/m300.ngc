@@ -1,10 +1,30 @@
 o<m300> sub
-#500=28
-#501=12
+#500=50; buzzer frequency index
+#501=51; buzzer duration index
+#502=52; buzzer trigger index
 o100 if [EXISTS[#<s>]]
-    M68 E[#500+1] Q#<s>; frequency
+    M68 E#500 Q#<s>; frequency
+    o110 if [#[#500+100] EQ 1]
+        M65 P#500
+        #[#500+100]=0
+    o110 else
+        M64 P#500
+        #[#500+100]=1
+    o110 endif
 o100 endif
-M68 E#500 Q#<P>; duration
-M64 P#501; trigger beep
-M65 P#501
+M68 E[#500+1] Q#<P>; duration
+o101 if [#[#501+100] EQ 1]
+    M65 P#501
+    #[#501+100]=0
+o101 else
+    M64 P#501
+    #[#501+100]=1
+o101 endif
+o102 if [#[#502+100] EQ 1]; trigger beep
+    M65 P#502
+    #[#502+100]=0
+o102 else
+    M64 P#502
+    #[#502+100]=1
+o102 endif
 o<m300> end sub

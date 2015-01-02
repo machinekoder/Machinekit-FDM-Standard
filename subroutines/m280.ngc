@@ -1,4 +1,15 @@
 o<m280> sub
-#500=22; servo aio start index
-M68 E[#500+#<P>] Q#<S>
+#500=22; servo io start index
+#502=#500
+o100 if [EXISTS[#<p>]]
+    #502=[#<p>+#500]
+o100 endif
+M68 E#502 Q#<S>
+o101 if [#[#502+100] EQ 1]
+    M65 P#502
+    #[#502+100]=0
+o101 else
+    M64 P#502
+    #[#502+100]=1
+o101 endif
 o<m280> end sub

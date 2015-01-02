@@ -78,6 +78,7 @@
 | 44 - 49 | P1-P3 XY position trigger |
 | 50 | Buzzer frequency trigger |
 | 51 | Buzzer duration trigger |
+| 52 | Buzzer trigger |
 
 ### Digital Input
 | #      | Name    |
