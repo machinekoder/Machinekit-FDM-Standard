@@ -47,8 +47,8 @@
 | 28 | L0 blue value |
 | 29 | L0 white value |
 | 30 - 37 | L1-L2 RGBW values |
-| 38 | Probe count |
-| 39 | Probe speed |
+| 38 | unused |
+| 39 | unused |
 | 40 | Probe head X offset |
 | 41 | Probe head Y offset |
 | 42 | Probe head Z offset |
@@ -99,25 +99,26 @@ Heated build platform, heated build chamber and extruders have the same interfac
 Example interface:
 
     newcomp fdm-hbp timer=100
-    newpin fdm-hbp fdm-hbp.temp.meas float in
-    newpin fdm-hbp fdm-hbp.temp.set  float io
-    newpin fdm-hbp fdm-hbp.temp.max  float in
-    newpin fdm-hbp fdm-hbp.temp.min  float in
-    newpin fdm-hbp fdm-hbp.error     bit io
-    ready fdm-hbp
+    newpin  fdm-hbp fdm-hbp.temp.meas      float in
+    newpin  fdm-hbp fdm-hbp.temp.set       float io
+    newpin  fdm-hbp fdm-hbp.temp.limit.min float in
+    newpin  fdm-hbp fdm-hbp.temp.limit.max float in
+    newpin  fdm-hbp fdm-hbp.temp.in-range  bit   in
+    newpin  fdm-hbp fdm-hbp.no-error       bit   in
+    ready   fdm-hbp
     
 ### Fans
 Fans and other PWM controlled devices have a very simple interface:
 
     newcomp fdm-f0 timer=100
-    newpin fdm-f0 fdm-f0.pwm.set float io
+    newpin fdm-f0 fdm-f0.set float io
     ready fdm-f0
 
 ### Lights
 
     newcomp fdm-l0 timer=100
-    newpin fdm-l0 fdm-l0.color.r float io
-    newpin fdm-l0 fdm-l0.color.g float io
-    newpin fdm-l0 fdm-l0.color.b float io
-    newpin fdm-l0 fdm-l0.color.w float io
+    newpin fdm-l0 fdm-l0.r float io
+    newpin fdm-l0 fdm-l0.g float io
+    newpin fdm-l0 fdm-l0.b float io
+    newpin fdm-l0 fdm-l0.w float io
     ready  fdm-l0
