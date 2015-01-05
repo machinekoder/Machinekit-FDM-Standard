@@ -3,7 +3,7 @@ o<m106> sub
 #501=1; synchronized
 #502=#500
 o100 if [EXISTS[#<i>]]
-    o110 if [#<i> EQ 0]
+    o110 if [#<i> EQ 1]
         #501=0
     o110 endif
 o100 endif

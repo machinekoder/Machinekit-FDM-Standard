@@ -130,9 +130,9 @@ Example: `M400`
 Finishes all current moves and and thus clears the buffer. That's identical to `G4 P0`.
 
 ### [M420](./subroutines/m420.ngc): Set RGBW Colors as PWM
-Usage: `M420 P<LED index (0-2)> R<Red PWM (0-255)> E<Green PWM (0-255)> B<Blue PWM (0-255)> W<White PWM (0-255)>`
+Usage: `M420 P<LED index (0-2)> R<Red PWM (0-255)> E<Green PWM (0-255)> D<Blue PWM (0-255)> S<White PWM (0-255)>`
 
-Example: `M420 R255 E255 B255 W255`
+Example: `M420 R255 E255 D255 S255`
 
 Set the color of your RGBW LEDs that are connected to PWM-enabled pins. Note, the Green color is controlled by the E value instead of the G value due to the G code being a primary code that cannot be overridden. The optional P parameter specifies the index of the LEDs to set (default 0).
 

@@ -1,9 +1,9 @@
 o<m420> sub
 #500=26; light io start index
 #501=#500
-o100 if [EXISTS[#<p>]]
+o104 if [EXISTS[#<p>]]
     #501=[#<p>*4+#500]
-o100 endif
+o104 endif
 #502=[#501+1]
 #503=[#501+2]
 #504=[#501+3]
@@ -27,8 +27,8 @@ o101 if [EXISTS[#<e>]]
         #[#502+100]=1
     o111 endif
 o101 endif
-o102 if [EXISTS[#<b>]]
-    M68 E#503 Q#<b>
+o102 if [EXISTS[#<d>]]
+    M68 E#503 Q#<d>
     o112 if [#[#503+100] EQ 1]
         M65 P#503
         #[#503+100]=0
@@ -37,14 +37,14 @@ o102 if [EXISTS[#<b>]]
         #[#503+100]=1
     o112 endif
 o102 endif
-o103 if [EXISTS[#<w>]]
-    M68 E#503 Q#<w>
-    o113 if [#[#503+100] EQ 1]
-        M65 P#503
-        #[#503+100]=0
+o103 if [EXISTS[#<s>]]
+    M68 E#504 Q#<s>
+    o113 if [#[#504+100] EQ 1]
+        M65 P#504
+        #[#504+100]=0
     o113 else
-        M64 P#503
-        #[#503+100]=1
+        M64 P#504
+        #[#504+100]=1
     o113 endif
 o103 endif
 o<m420> end sub 
