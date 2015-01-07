@@ -24,15 +24,8 @@
 | 29 | L0 white value |
 | 30 - 37 | L1-L2 RGBW values |
 | 38 | Probe selection (for homing) |
-| 39 | unused |
-| 40 | Probe head X offset |
-| 41 | Probe head Y offset |
-| 42 | Probe head Z offset |
-| 43 | P0 X position |
-| 44 | P0 Y position |
-| 45 - 50 | P1-P3 XY position |
-| 51 | Buzzer frequency |
-| 52 | Buzzer duration |
+| 39 | Buzzer frequency |
+| 40 | Buzzer duration |
 
 ### Analog Input
 | #      | Name    |
@@ -48,15 +41,8 @@
 | 29 | L0 white value |
 | 30 - 37 | L1-L2 RGBW values |
 | 38 | unused |
-| 39 | unused |
-| 40 | Probe head X offset |
-| 41 | Probe head Y offset |
-| 42 | Probe head Z offset |
-| 43 | P0 X position |
-| 44 | P0 Y position |
-| 45 - 50 | P1-P3 XY position |
-| 51 | Buzzer frequency |
-| 52 | Buzzer duration |
+| 39 | Buzzer frequency |
+| 40 | Buzzer duration |
 
 ### Digital Output
 | #      | Name    |
@@ -72,16 +58,9 @@
 | 29 | L0 white value trigger |
 | 30 - 37 | L1-L2 RGBW values trigger |
 | 38 | Probe enable |
-| 39 | unused |
-| 40 | Probe head X offset trigger |
-| 41 | Probe head Y offset trigger |
-| 42 | Probe head Z offset trigger |
-| 43 | P0 X position trigger |
-| 44 | P0 Y position trigger |
-| 45 - 50 | P1-P3 XY position trigger |
-| 51 | Buzzer frequency trigger |
-| 52 | Buzzer duration trigger |
-| 53 | Buzzer trigger |
+| 39 | Buzzer frequency trigger |
+| 40 | Buzzer duration trigger |
+| 41 | Buzzer trigger |
 
 ### Digital Input
 | #      | Name    |
@@ -104,7 +83,8 @@ Example interface:
     newpin  fdm-hbp fdm-hbp.temp.limit.min float in
     newpin  fdm-hbp fdm-hbp.temp.limit.max float in
     newpin  fdm-hbp fdm-hbp.temp.in-range  bit   in
-    newpin  fdm-hbp fdm-hbp.no-error       bit   in
+    newpin  fdm-hbp fdm-hbp.error          bit   in
+    newpin  fmd-hbp fdm-hbp.active         bit   in
     ready   fdm-hbp
     
 ### Fans

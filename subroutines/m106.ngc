@@ -7,8 +7,8 @@ o100 if [EXISTS[#<i>]]
         #501=0
     o110 endif
 o100 endif
-o101 if [EXISTS[#<p>]]
-    #502=[#<p>+#500]
+o101 if [EXISTS[#<t>]]
+    #502=[#<t>+#500]
 o101 endif
 o102 if [#501 EQ 1]
     M67 E#502 Q#<S>

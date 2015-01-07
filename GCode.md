@@ -15,22 +15,23 @@ Example: `G29`
 Probes the bed at a specified number of point points (usually 3-4).
 
 ### [G29.1](./subroutines/g29_1.ngc): Set Z probe head offset
-Example: `G30.1 X30 Y20 Z0.5`
+Example: `G29.1 X30 Y20 Z0.5`
 
 Set the offset of the Z probe head. The offset will be subtracted from all probe moves.
+
+### [G29.2](./subroutines/g29_2.ngc): Set Z probe head offset calculated from toolhead position
+Example: `G29.2 Z0.0`
+
+Set the offset of the Z probe head. The offset will be subtracted from all probe moves. The calculated value is derived from the distance of the toolhead from the current axis zero point.
+
+The user would typically place the toolhead at the zero point of the axis and issue the G29.2 command.
 
 ### [G30](./subroutines/g30.ngc): Single Z Probe
 Example: `G30 X10 Y0`
 
 In its simplest form probes bed at current XY location.
 
-If a Pn field is specified the probed X, and Y values are saved as point n on the bed for calculating the offset plane. Generally n is 0, 1, or 2. If X, or Y values are specified (e.g. `G30 P1 X20 Y50`) then those values are used instead of the machine's current coordinates. The combination of these options allows for the machine to be moved to points using G1 commands, and then probe the bed, or for the user to position the nozzle interactively and use those coordinates. The user can also record those values and place them in a setup GCode file for automatic execution.
-
-
-### [G30.1](./subroutines/g30_1.ngc): Set Z probe point
-Example: `G30.1 P1 X30 Y40.5`
-
-Set the points at which the bed will be probed to compensate for its plane being slightly out of horizontal. The P value is the index of the point (indices start at 0) and the X and Y values are the position to move extruder 0 to to probe the bed. An implementation should allow a minimum of three points (P0, P1 and P2). This just records the point coordinates; it does not actually do the probing. See G32.
+If X, or Y values are specified (e.g. `G30 X20 Y50`) then those values are used instead of the machine's current coordinates. The combination of these options allows for the machine to be moved to points using G1 commands, and then probe the bed, or for the user to position the nozzle interactively and use those coordinates. The user can also record those values and place them in a setup GCode file for automatic execution.
 
 ## MCodes
 Machinekit supports a number of FDM specific MCodes inspired by the [RepRap MCodes](http://reprap.org/wiki/G-code). These codes are implemented using remapping. If you are interested in developing your own Machinekit based 3D printer take a look at the [remap file](remap.ini).
@@ -41,9 +42,9 @@ Example: `M104 S190`
 Set the temperature of the current extruder to 190oC and return control to the host immediately (i.e. before that temperature has been reached by the extruder). 
 
 #### Multiple Exruders
-M104 can be additionally used to handle all devices using a temperature sensor. It supports the additional P parameter, which is a zero-based index into the list of sensors. For devices without a temp sensor, see M106.
+M104 can be additionally used to handle all devices using a temperature sensor. It supports the additional T parameter, which is a zero-based index into the list of sensors. For devices without a temp sensor, see M106.
 
-Example: `M104 P1 S100`
+Example: `M104 T1 S100`
 
 Set the temperature of the device attached to the second temperature sensor to 100 °C.
 
@@ -62,9 +63,9 @@ Turn on the cooling fan off.
 Deprecated. Use M106 S0 instead. (But used by Slic3r)
 
 #### Additional Fans/Devices
-Additionally to the above, Machinekit uses M106 to control general devices. It supports the additional P parameter, which is an zero-based index into the list of fans/devices.
+Additionally to the above, Machinekit uses M106 to control general devices. It supports the additional T parameter, which is an zero-based index into the list of fans/devices.
 
-Example: `M106 P2 S255`
+Example: `M106 T2 S255`
 
 Turn on device #3 at full speed/wattage.
 
@@ -81,9 +82,9 @@ Example: `M109 S185`
 Set extruder heater temperature in degrees celsius and wait for this temperature to be achieved.
 
 #### Multiple Exruders
-Similar to M104 this command supports the additional P parameter for specifying the extruder.
+Similar to M104 this command supports the additional T parameter for specifying the extruder.
 
-Example: `M109 P1 S100`
+Example: `M109 T1 S100`
 
 Set the temperature of the device attached to the second temperature sensor to 100 °C and wait for the temperature to be reached.
 
@@ -113,9 +114,9 @@ Example: `M226`
 Initiates a pause in the same way as if the pause button is pressed. That is, program execution is stopped and the printer waits for user interaction. This matches the behaviour of M1 in the [NIST RS274NGC G-code standard](http://www.nist.gov/manuscript-publication-search.cfm?pub_id=823374).
 
 ### [M280](./subroutines/m280.ngc): Set servo position
-Example: `M280 P0 S1500`
+Example: `M280 T0 S1500`
 
-Set servo position absolute. P: servo index, S: angle or microseconds
+Set servo position absolute. T: servo index, S: angle or microseconds
 
 ### [M300](./subroutines/m300.ngc): Play beep sound
 Usage: `M300 S<frequency Hz> P<duration ms>`
@@ -130,11 +131,11 @@ Example: `M400`
 Finishes all current moves and and thus clears the buffer. That's identical to `G4 P0`.
 
 ### [M420](./subroutines/m420.ngc): Set RGBW Colors as PWM
-Usage: `M420 P<LED index (0-2)> R<Red PWM (0-255)> E<Green PWM (0-255)> D<Blue PWM (0-255)> S<White PWM (0-255)>`
+Usage: `M420 T<LED index (0-2)> R<Red PWM (0-255)> E<Green PWM (0-255)> D<Blue PWM (0-255)> S<White PWM (0-255)>`
 
 Example: `M420 R255 E255 D255 S255`
 
-Set the color of your RGBW LEDs that are connected to PWM-enabled pins. Note, the Green color is controlled by the E value instead of the G value due to the G code being a primary code that cannot be overridden. The optional P parameter specifies the index of the LEDs to set (default 0).
+Set the color of your RGBW LEDs that are connected to PWM-enabled pins. Note, the Green color is controlled by the E value instead of the G value due to the G code being a primary code that cannot be overridden. The optional T parameter specifies the index of the LEDs to set (default 0).
 
 ## RepRap Alternatives
 Some RepRap GCodes can not be implemented but easily replaced by native Machinekit GCodes.

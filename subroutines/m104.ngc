@@ -1,8 +1,8 @@
 o<m104> sub
 #500=2; extruder io start index
 #502=#500
-o100 if [EXISTS[#<p>]]
-    #502=[#<p>+#500]
+o100 if [EXISTS[#<t>]]
+    #502=[#<t>+#500]
 o100 endif
 M68 E#502 Q#<S>
 o101 if [#[#502+100] EQ 1]

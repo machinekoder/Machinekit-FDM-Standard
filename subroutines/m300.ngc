@@ -1,7 +1,7 @@
 o<m300> sub
-#500=51; buzzer frequency index
-#501=52; buzzer duration index
-#502=53; buzzer trigger index
+#500=39; buzzer frequency index
+#501=40; buzzer duration index
+#502=41; buzzer trigger index
 o100 if [EXISTS[#<s>]]
     M68 E#500 Q#<s>; frequency
     o110 if [#[#500+100] EQ 1]
