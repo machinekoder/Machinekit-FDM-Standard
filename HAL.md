@@ -77,15 +77,16 @@ Heated build platform, heated build chamber and extruders have the same interfac
 
 Example interface:
 
-    newcomp fdm-hbp timer=100
-    newpin  fdm-hbp fdm-hbp.temp.meas      float in
-    newpin  fdm-hbp fdm-hbp.temp.set       float io
-    newpin  fdm-hbp fdm-hbp.temp.limit.min float in
-    newpin  fdm-hbp fdm-hbp.temp.limit.max float in
-    newpin  fdm-hbp fdm-hbp.temp.in-range  bit   in
-    newpin  fdm-hbp fdm-hbp.error          bit   in
-    newpin  fmd-hbp fdm-hbp.active         bit   in
-    ready   fdm-hbp
+    newcomp fdm-e0 timer=100
+    newpin  fdm-e0 fdm-e0.temp.meas      float in
+    newpin  fdm-e0 fdm-e0.temp.set       float io
+    newpin  fdm-e0 fdm-e0.temp.standby   float in
+    newpin  fdm-e0 fdm-e0.temp.limit.min float in
+    newpin  fdm-e0 fdm-e0.temp.limit.max float in
+    newpin  fdm-e0 fdm-e0.temp.in-range  bit   in
+    newpin  fdm-e0 fdm-e0.error          bit   in
+    newpin  fdm-e0 fdm-e0.active         bit   in
+    ready   fdm-e0
     
 ### Fans
 Fans and other PWM controlled devices have a very simple interface:
