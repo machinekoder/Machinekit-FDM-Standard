@@ -3,8 +3,9 @@ There are few sections in the INI file specific for 3D printing.
 
 ## Heaters
 
-Machinekit has section for each heating element. These are named `EXTRUDER_n` for the extruders (n is the number of the extruder), `HBP` for the heated build platform and `HBC` for the heated build chamber. It supports the following parameters:
+Machinekit has a INI section for each heating element. These are named `EXTRUDER_n` for the extruders (n is the number of the extruder), `HBP` for the heated build platform and `HBC` for the heated build chamber. It supports the following parameters:
 
+### EXTRUDER_n, HBP or HBC
 
 **PID_PGAIN** P gain value of the PID component
 
@@ -31,3 +32,27 @@ Machinekit has section for each heating element. These are named `EXTRUDER_n` fo
 **THERMISTOR** Thermistor table to use for this heater.
 
 ## Probing
+
+If you have a probing head you need add a few probing related section to your INI file in 
+order to use the G29 and G30 codes.
+
+The `PROBE` section contains values related the probe head. X, Y and Z offset are stored in the tool table as tool offsets. For every probing point you need to define a `Pn` section containing the coordinates of the probing point. At least one probing point needs to be defined. Currently only a single point is supported.
+
+### PROBE
+
+**COUNT** The number of probe points to use. Currently only one supported.
+
+**SEARCH_VEL** Search velocity when probing.
+
+**TOOL_NR** Tool number of the probe head to use for X, Y and Z offsets. Usually 100.
+
+**START_Z** The Z position at which probing should be started. Before probing all machine offsets are cleared. Therefore Z is relative to the homing position.
+
+**END_Z** The Z position to which the probing head should be moved after probing. This position is in relation to the new offset values after probing. Therefore setting this value to 1 will result in the nozzle being placed 1mm above the build platform.
+
+**HBP_TEMP** When defined this value specifies the temperature the heated build platform should have when probing is utilized. Specifying this parameter is useful when using a inductive probe sensor and metal build platform.
+
+### Pn
+
+**X** X position of the probing point.
+**Y** Y position of the probing point.
