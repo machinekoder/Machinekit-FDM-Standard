@@ -31,6 +31,10 @@ Machinekit has a INI section for each heating element. These are named `EXTRUDER
 
 **THERMISTOR** Thermistor table to use for this heater.
 
+**RETRACT_VEL** Retraction velocity for this extruder.
+
+**RETRACT_LENGTH** Retraction length for this extruder.
+
 ## Probing
 
 If you have a probing head you need add a few probing related section to your INI file in 

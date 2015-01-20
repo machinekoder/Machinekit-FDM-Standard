@@ -2,6 +2,12 @@
 
 ## GCodes
 
+### [G22](./subroutines/g22.ngc): Retract Extruder
+Retracts the currently active extruder.
+
+### [G23](./subroutines/g23.ngc): Unretract Extruder
+Unetracts the currently active extruder.
+
 ### [G28](./subroutines/g28.ngc): Move to Origin
 Example: `G28`
 
