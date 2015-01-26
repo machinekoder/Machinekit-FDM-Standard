@@ -47,20 +47,9 @@
 ### Digital Output
 | #      | Name    |
 | :----: | :-----: |
-| 0 | HBP target temperature trigger |
-| 1 | HBC target temperature trigger |
-| 2 - 11 | E0-E9 target temperature trigger |
-| 12 - 21 | F0-F9 speed trigger |
-| 22 - 25 | S0-S3 pulse duration trigger |
-| 26 | L0 red value trigger |
-| 27 | L0 green value trigger |
-| 28 | L0 blue value trigger |
-| 29 | L0 white value trigger |
-| 30 - 37 | L1-L2 RGBW values trigger |
-| 38 | Probe enable |
-| 39 | Buzzer frequency trigger |
-| 40 | Buzzer duration trigger |
-| 41 | Buzzer trigger |
+| 0 | Probe enable |
+| 1 | Extruder enable |
+| 2 | Buzzer trigger |
 
 ### Digital Input
 | #      | Name    |
