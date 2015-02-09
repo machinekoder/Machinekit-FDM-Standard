@@ -43,19 +43,19 @@ If X, or Y values are specified (e.g. `G30 X20 Y50`) then those values are used 
 Machinekit supports a number of FDM specific MCodes inspired by the [RepRap MCodes](http://reprap.org/wiki/G-code). These codes are implemented using remapping. If you are interested in developing your own Machinekit based 3D printer take a look at the [remap file](remap.ini).
 
 ### [M104](./subroutines/m104.ngc): Set Extruder Temperature
-Example: `M104 S190`
+Example: `M104 P190`
 
-Set the temperature of the current extruder to 190oC and return control to the host immediately (i.e. before that temperature has been reached by the extruder). 
+Set the temperature of the current extruder to 190 °C and return control to the host immediately (i.e. before that temperature has been reached by the extruder). 
 
 #### Multiple Exruders
 M104 can be additionally used to handle all devices using a temperature sensor. It supports the additional T parameter, which is a zero-based index into the list of sensors. For devices without a temp sensor, see M106.
 
-Example: `M104 T1 S100`
+Example: `M104 T1 P100`
 
 Set the temperature of the device attached to the second temperature sensor to 100 °C.
 
 ### [M106](./subroutines/m106.ngc): Fan On
-Example: `M106 S127`
+Example: `M106 P127`
 
 Turn on the cooling fan at half speed.
 
@@ -66,51 +66,51 @@ Example: `M107`
 
 Turn on the cooling fan off.
 
-Deprecated. Use M106 S0 instead. (But used by Slic3r)
+Deprecated. Use `M106 P0` instead. (But used by Slic3r)
 
 #### Additional Fans/Devices
 Additionally to the above, Machinekit uses M106 to control general devices. It supports the additional T parameter, which is an zero-based index into the list of fans/devices.
 
-Example: `M106 T2 S255`
+Example: `M106 T2 P255`
 
 Turn on device #3 at full speed/wattage.
 
 #### Sync with Motion
 By default the M106 command will be executed with the next movement. This default behavior is used since the fan speed is constantly switched during execution and an unsynchronized movement would break look-ahead and path blending. For the purpose of executing a command immediately the M106 supports the additional I parameter.
 
-Example: `M106 I1 S127`
+Example: `M106 I1 P127`
 
 Turn on the cooling fan at half speed immediately. `I0` equals to not immediate, all other values evaluate to immediate if I is specified.
 
 ### [M109](./subroutines/m109.ngc): Set Extruder Temperature and Wait
-Example: `M109 S185`
+Example: `M109 P185`
 
 Set extruder heater temperature in degrees celsius and wait for this temperature to be achieved.
 
 #### Multiple Exruders
 Similar to M104 this command supports the additional T parameter for specifying the extruder.
 
-Example: `M109 T1 S100`
+Example: `M109 T1 P100`
 
 Set the temperature of the device attached to the second temperature sensor to 100 °C and wait for the temperature to be reached.
 
 ### [M140](./subroutines/m140.ngc): Bed Temperature (Fast)
-Example: `M140 S55`
+Example: `M140 P55`
 
 Set the temperature of the build bed to 55 °C and return control to the host immediately (i.e. before that temperature has been reached by the bed).
 
 ### [M141](./subroutines/m141.ngc): Chamber Temperature (Fast)
-Example: `M141 S30`
+Example: `M141 P30`
 
 Set the temperature of the chamber to 30 °C and return control to the host immediately (i.e. before that temperature has been reached by the chamber).
 
 ### [M190](./subroutines/m190.ngc): Wait for bed temperature to reach target temp
-Example: `M190 S60`
+Example: `M190 P60`
 
 Set the temperature of the build bed to 60 °C and wait for the temperature to be reached.
 
 ### [M191](./subroutines/m191.ngc): Wait for chamber temperature to reach target temp
-Example: `M191 S60`
+Example: `M191 P60`
 
 Set the temperature of the build chamber to 60 °C and wait for the temperature to be reached.
 
@@ -120,16 +120,16 @@ Example: `M226`
 Initiates a pause in the same way as if the pause button is pressed. That is, program execution is stopped and the printer waits for user interaction. This matches the behaviour of M1 in the [NIST RS274NGC G-code standard](http://www.nist.gov/manuscript-publication-search.cfm?pub_id=823374).
 
 ### [M280](./subroutines/m280.ngc): Set servo position
-Example: `M280 T0 S1500`
+Example: `M280 T0 P1500`
 
-Set servo position absolute. T: servo index, S: angle or microseconds
+Set servo position absolute. T: servo index, P: angle or microseconds
 
 ### [M300](./subroutines/m300.ngc): Play beep sound
-Usage: `M300 S<frequency Hz> P<duration ms>`
+Usage: `M300 Q<frequency Hz> P<duration ms>`
 
-Example: `M300 S300 P1000`
+Example: `M300 Q300 P1000`
 
-Play beep sound, use to notify important events like the end of printing. The S parameter is optional and may not be supported by all electronics that implement the buzzer.
+Play beep sound, use to notify important events like the end of printing. The P parameter is optional and may not be supported by all electronics that implement the buzzer.
 
 ### [M400](./subroutines/m400.ngc): Wait for current moves to finish
 Example: `M400`
@@ -137,9 +137,9 @@ Example: `M400`
 Finishes all current moves and and thus clears the buffer. That's identical to `G4 P0`.
 
 ### [M420](./subroutines/m420.ngc): Set RGBW Colors as PWM
-Usage: `M420 T<LED index (0-2)> R<Red PWM (0-1)> E<Green PWM (0-1)> D<Blue PWM (0-1)> S<White PWM (0-1)>`
+Usage: `M420 T<LED index (0-2)> R<Red PWM (0-1)> E<Green PWM (0-1)> D<Blue PWM (0-1)> P<White PWM (0-1)>`
 
-Example: `M420 R1.0 E1.0 D1.0 S1.0`
+Example: `M420 R1.0 E1.0 D1.0 P1.0`
 
 Set the color of your RGBW LEDs that are connected to PWM-enabled pins. Note, the Green color is controlled by the E value instead of the G value due to the G code being a primary code that cannot be overridden. The optional T parameter specifies the index of the LEDs to set (default 0).
 

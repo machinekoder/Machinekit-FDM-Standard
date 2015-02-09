@@ -2,8 +2,8 @@ o<m420> sub
 #500=26; light io start index
 #501=0; not synchronized
 #502=#500
-o104 if [EXISTS[#<p>]]
-    #502=[#<p>*4+#500]
+o104 if [EXISTS[#<t>]]
+    #502=[#<t>*4+#500]
 o104 endif
 #503=[#502+1]
 #504=[#502+2]
@@ -29,11 +29,11 @@ o102 if [EXISTS[#<d>]]
         M68 E#504 Q#<d>
     o112 endif
 o102 endif
-o103 if [EXISTS[#<s>]]
+o103 if [EXISTS[#<p>]]
     o113 if [#501 EQ 1]
-        M67 E#505 Q#<s>
+        M67 E#505 Q#<p>
     o113 else
-        M68 E#505 Q#<s>
+        M68 E#505 Q#<p>
     o113 endif
 o103 endif
 o<m420> end sub 

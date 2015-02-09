@@ -7,8 +7,8 @@ o100 if [EXISTS[#<i>]]
     o110 endif
 o100 endif
 o101 if [#501 EQ 1]
-    M67 E#502 Q#<S>
+    M67 E#502 Q#<P>
 o101 else
-    M68 E#502 Q#<S>
+    M68 E#502 Q#<P>
 o101 endif
 o<m141> end sub 
