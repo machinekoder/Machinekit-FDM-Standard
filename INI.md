@@ -1,8 +1,15 @@
 # FDM Specific INI parameters
 There are few sections in the INI file specific for 3D printing.
 
-## Heaters
+## General
+In the general FDM section parameters that relate to FDM with Machinekit in
+general are defined.
 
+### FDM
+
+**VELOCITY_EXTRUSION_ENABLE** Enables velocity extrusion mode
+
+## Heaters
 Machinekit has a INI section for each heating element. These are named `EXTRUDER_n` for the extruders (n is the number of the extruder), `HBP` for the heated build platform and `HBC` for the heated build chamber. It supports the following parameters:
 
 ### EXTRUDER_n, HBP or HBC
