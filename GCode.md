@@ -114,6 +114,14 @@ Example: `M191 P60`
 
 Set the temperature of the build chamber to 60 °C and wait for the temperature to be reached.
 
+### [M200](./subroutines/m200.ngc): Set filament diameter
+Example: `M200 D1.75`
+
+`M200 Dm.mmm` sets the filament diameter to m.mmm millimeters. It is used with
+'volumetric calibration' and G-code generated for an ideal 1.128mm diameter
+filament, which has a volume of 1mm^3 per millimeter. The intention is to be
+able to generate filament-independent g-code.
+
 ### [M226](./subroutines/m226.ngc): Gcode Initiated Pause
 Example: `M226`
 
