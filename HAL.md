@@ -26,6 +26,10 @@
 | 38 | Probe selection (for homing) |
 | 39 | Buzzer frequency |
 | 40 | Buzzer duration |
+| 41 | VE line area |
+| 42 | VE jog velocity |
+| 43 | VE jog length |
+| 44 | filament diameter |
 
 ### Analog Input
 | #      | Name    |
@@ -43,6 +47,10 @@
 | 38 | unused |
 | 39 | Buzzer frequency |
 | 40 | Buzzer duration |
+| 41 | VE line area |
+| 42 | VE jog velocity |
+| 43 | VE jog length |
+| 44 | filament diameter |
 
 ### Digital Output
 | #      | Name    |
