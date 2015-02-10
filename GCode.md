@@ -151,6 +151,13 @@ Example: `M420 R1.0 E1.0 D1.0 P1.0`
 
 Set the color of your RGBW LEDs that are connected to PWM-enabled pins. Note, the Green color is controlled by the E value instead of the G value due to the G code being a primary code that cannot be overridden. The optional T parameter specifies the index of the LEDs to set (default 0).
 
+### [M600](./subroutines/m600.ngc): Set line cross section
+Example: `M600 P0.061`
+
+Sets the cross section for a line to extrude in velocity extrusion mode. When
+the extruder is enabled and movement is executed the amount of extruded
+filament will be calculated to match the specified line cross section.
+
 ## RepRap Alternatives
 Some RepRap GCodes can not be implemented but easily replaced by native Machinekit GCodes.
 
