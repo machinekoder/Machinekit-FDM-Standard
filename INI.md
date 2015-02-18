@@ -40,7 +40,7 @@ Machinekit has a INI section for each heating element. These are named `EXTRUDER
 
 **RETRACT_VEL** Retraction velocity for this extruder.
 
-**RETRACT_LENGTH** Retraction length for this extruder.
+**RETRACT_LEN** Retraction length for this extruder.
 
 ## Probing
 
