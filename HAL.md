@@ -47,10 +47,12 @@
 | 38 | unused |
 | 39 | Buzzer frequency |
 | 40 | Buzzer duration |
-| 41 | VE line area |
-| 42 | VE jog velocity |
-| 43 | VE jog length |
+| 41 | VE line cross section |
+| 42 | VE line width |
+| 43 | VE line height |
 | 44 | filament diameter |
+| 45 | VE jog velocity |
+| 46 | VE jog length |
 
 ### Digital Output
 | #      | Name    |
@@ -58,6 +60,7 @@
 | 0 | Probe enable |
 | 1 | Extruder enable |
 | 2 | Buzzer trigger |
+| 13 | VE jog trigger output |
 
 ### Digital Input
 | #      | Name    |
@@ -65,6 +68,9 @@
 | 0 | HBP temperature in range |
 | 1 | HBC temperature in range |
 | 2 - 11 | E0-E9 temperature in range |
+| 12 | VE retract feedback |
+| 13 | VE jog trigger input |
+| 14 | VE jog feedback |
 
 ## HAL Remote Components
 
