@@ -1,4 +1,8 @@
 * Machinekit Flavor GCode
+This file contains Machinekit FDM related GCodes and MCodes. These codes can
+be implemented using remaps. For an example how to integrate it take look at
+[[./remap.ini][remap.ini]].
+
 
 ** GCodes
 

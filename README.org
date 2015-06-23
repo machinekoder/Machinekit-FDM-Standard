@@ -2,3 +2,14 @@
 
 Repository to work on a common Machinekit FMD standard including GCode
 und naming of HAL components
+
+** [[./HAL.org][HAL]]
+Contains numbering and naming of signals and motion pins as well as FDM
+specific HAL remote components.
+
+** [[./GCode.org][GCode]]
+Contains Machinekit FDM specific GCodes and MCodes.
+
+** [[./INI.org][INI]]
+Contains names of common INI file variables.
+
