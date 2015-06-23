@@ -1,15 +1,16 @@
 *** Abbreviations
 
-| Abbreviation   | Name                        |
-|----------------+-----------------------------|
-| FDM            | Fused Deposition Modeling   |
-| HBP            | Heated Build Platform       |
-| HBC            | Heated Build Chamber        |
-| En             | Extruder n                  |
-| Fn             | Fan n                       |
-| Ln             | Light n                     |
-| Sn             | Servo n                     |
-| Pn             | Probe n                     |
+| Abbreviation | Name                      |
+|--------------+---------------------------|
+| FDM          | Fused Deposition Modeling |
+| HBP          | Heated Build Platform     |
+| HBC          | Heated Build Chamber      |
+| En           | Extruder n                |
+| Fn           | Fan n                     |
+| Ln           | Light n                   |
+| Sn           | Servo n                   |
+| Pn           | Probe n                   |
+| VE           | Velocity Extrusion        |
 
 *** Analog Output
 
